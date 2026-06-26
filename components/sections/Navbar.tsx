@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#how", label: "چطور کار می‌کند" },
-  { href: "#features", label: "امکانات" },
+  { href: "#compare", label: "چرا اپیتو" },
   { href: "#showcase", label: "نمونه‌ها" },
   { href: "#pricing", label: "تعرفه‌ها" },
 ];

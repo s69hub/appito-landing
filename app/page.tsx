@@ -2,7 +2,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Features } from "@/components/sections/Features";
+import { Comparison } from "@/components/sections/Comparison";
 import { Devices } from "@/components/sections/Devices";
 import { Pricing } from "@/components/sections/Pricing";
 import { CaseStudies } from "@/components/sections/CaseStudies";
@@ -17,7 +17,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <HowItWorks />
-        <Features />
+        <Comparison />
         <Devices />
         <Pricing />
         <CaseStudies />

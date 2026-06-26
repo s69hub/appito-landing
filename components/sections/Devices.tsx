@@ -86,7 +86,7 @@ export function Devices() {
             </div>
 
             {/* overlapping phone */}
-            <div className="absolute -bottom-8 right-0 hidden scale-75 md:block lg:-right-6">
+            <div className="absolute -bottom-8 left-0 hidden scale-75 md:block lg:-left-6">
               <div className="animate-float">
                 <PhoneMockup className="w-[230px]" />
               </div>

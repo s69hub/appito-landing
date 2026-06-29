@@ -23,25 +23,15 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
         {/* copy */}
         <div className="text-center lg:text-right">
-          <motion.span
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-muted"
-          >
-            <span className="h-2 w-2 rounded-full bg-accent-2 animate-pulse" />
-            فروشگاه‌ساز وایت‌لیبل روی دامنه‌ی شما
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-6 text-4xl font-black leading-[1.25] tracking-tight md:text-6xl"
           >
-            فروشگاه اینترنتی
+            اپلیکیشن‌ساز
             <br />
-            <span className="gradient-text">حرفه‌ای و موبایلی</span>
+            <span className="gradient-text">فروشگاهی حرفه‌ای</span>
             <br />
             روی دامنه‌ی خودتان
           </motion.h1>
@@ -52,8 +42,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mx-auto mt-6 max-w-lg text-base leading-8 text-muted lg:mx-0 md:text-lg"
           >
-            با اپیتو بدون نیاز به کدنویسی، فروشگاه موبایلی خودتان را راه‌اندازی
-            کنید. کافیست دامنه‌تان را ثبت و DNS را تنظیم کنید؛ بقیه‌ی کار با ماست.
+            با اپیتو بدون نیاز به کدنویسی، اپلیکیشن فروشگاهی خودتان را راه‌اندازی کنید. کافیست دامنه‌تان را ثبت و DNS را
+            تنظیم کنید؛ بقیه‌ی کار با ماست.
           </motion.p>
 
           <motion.div
@@ -73,7 +63,7 @@ export function Hero() {
               href="#how"
               className="rounded-full border border-white/15 px-7 py-3.5 text-sm font-bold text-foreground transition-colors hover:bg-white/5"
             >
-              تماشای دمو
+              مشاهده دمو
             </a>
           </motion.div>
 

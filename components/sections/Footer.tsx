@@ -23,8 +23,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
-              اپیتو؛ فروشگاه‌ساز وایت‌لیبل برای راه‌اندازی فروشگاه موبایلی حرفه‌ای
-              روی دامنه‌ی اختصاصی شما.
+              اپیتو؛ اپلیکیشن‌ساز فروشگاهی وایت‌لیبل برای راه‌اندازی فروشگاه آنلاین حرفه‌ای روی دامنه‌ی اختصاصی شما.
             </p>
             <div className="mt-5 flex gap-3">
               {["instagram", "telegram", "twitter"].map((s) => (
@@ -46,10 +45,7 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {c.links.map((l) => (
                   <li key={l}>
-                    <a
-                      href="#"
-                      className="text-sm text-muted transition-colors hover:text-foreground"
-                    >
+                    <a href="#" className="text-sm text-muted transition-colors hover:text-foreground">
                       {l}
                     </a>
                   </li>

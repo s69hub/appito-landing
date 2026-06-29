@@ -19,8 +19,7 @@ export function CTA() {
                 <span className="gradient-text">روی دامنه‌ی خودتان</span> راه بیندازید
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-muted">
-                در کمتر از چند روز، یک فروشگاه موبایلی حرفه‌ای داشته باشید. بدون
-                کدنویسی، بدون دردسر فنی.
+                در کمتر از چند روز، یک اپلیکیشن فروشگاهی حرفه‌ای داشته باشید. بدون کدنویسی، بدون دردسر فنی.
               </p>
 
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -39,9 +38,7 @@ export function CTA() {
                 </a>
               </div>
 
-              <p className="mt-6 text-xs text-muted">
-                بدون نیاز به کارت بانکی · راه‌اندازی توسط تیم اپیتو
-              </p>
+              <p className="mt-6 text-xs text-muted">بدون نیاز به کارت بانکی · راه‌اندازی توسط تیم اپیتو</p>
             </div>
           </div>
         </Reveal>

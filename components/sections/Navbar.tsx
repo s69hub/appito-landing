@@ -22,34 +22,25 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "py-2.5" : "py-4"
-      )}
-    >
+    <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-300", scrolled ? "py-2.5" : "py-4")}>
       <nav
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 md:px-5",
-          scrolled ? "glass" : "bg-transparent"
+          scrolled ? "glass" : "bg-transparent",
         )}
       >
         <Logo />
 
         <div className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
+            <a key={l.href} href={l.href} className="text-sm text-muted transition-colors hover:text-foreground">
               {l.label}
             </a>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
-          <a
+          {/* <a
             href="#pricing"
             className="hidden rounded-full px-4 py-2 text-sm text-muted transition-colors hover:text-foreground sm:block"
           >
@@ -60,7 +51,7 @@ export function Navbar() {
             className="rounded-full bg-gradient-to-l from-brand to-accent px-4 py-2 text-sm font-bold text-white transition-transform hover:scale-105"
           >
             شروع رایگان
-          </a>
+          </a> */}
         </div>
       </nav>
     </header>

@@ -1,5 +1,6 @@
 import { Reveal } from "../Reveal";
 import { PhoneMockup } from "../PhoneMockup";
+import { platforms } from "../PlatformIcons";
 
 const deskProducts = [
   "from-pink-500/30 to-fuchsia-500/20",
@@ -18,24 +19,37 @@ export function Devices() {
       </div>
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold text-accent-2">دسکتاپ و موبایل</span>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">
-            روی هر صفحه‌ای، بی‌نقص
-          </h2>
+          <span className="text-sm font-bold text-accent-2">روی هر سیستم‌عاملی</span>
+          <h2 className="mt-3 text-3xl font-black md:text-5xl">روی هر صفحه‌ای، بی‌نقص</h2>
           <p className="mt-4 text-muted">
-            فروشگاه شما به‌صورت خودکار با موبایل، تبلت و دسکتاپ سازگار می‌شود.
+            اپلیکیشن فروشگاهی شما با اندروید، iOS و ویندوز فون کاملاً سازگار است و از روی کامپیوتر هم به‌صورت کامل در
+            دسترس مشتری‌هاست؛ بدون هیچ محدودیتی روی هر دستگاه.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {platforms.map(({ name, Icon }) => (
+              <li
+                key={name}
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-bold text-foreground shadow-sm"
+              >
+                <Icon className="h-5 w-5 text-brand" />
+                {name}
+              </li>
+            ))}
+          </ul>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="relative mt-16">
             {/* desktop browser */}
-            <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-bg-soft shadow-2xl glow">
-              <div className="flex items-center gap-2 border-b border-white/5 bg-white/[0.03] px-4 py-3">
+            <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl glow">
+              <div className="flex items-center gap-2 border-b border-line bg-bg-soft px-4 py-3">
                 <span className="h-3 w-3 rounded-full bg-red-400/70" />
                 <span className="h-3 w-3 rounded-full bg-amber-400/70" />
                 <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
-                <div className="mr-3 flex-1 rounded-md bg-white/5 px-3 py-1 text-center text-xs text-muted">
+                <div className="mr-3 flex-1 rounded-md border border-line bg-surface px-3 py-1 text-center text-xs text-muted">
                   🔒 leila.shop
                 </div>
               </div>
@@ -50,7 +64,7 @@ export function Devices() {
                     <span>درباره ما</span>
                     <span>تماس</span>
                   </div>
-                  <span className="rounded-full bg-gradient-to-l from-brand to-accent px-4 py-1.5 text-xs font-bold">
+                  <span className="rounded-full bg-gradient-to-l from-brand to-navy px-4 py-1.5 text-xs font-bold text-white">
                     سبد خرید
                   </span>
                 </div>
@@ -70,14 +84,11 @@ export function Devices() {
                 {/* product grid */}
                 <div className="grid grid-cols-3 gap-4">
                   {deskProducts.map((hue, i) => (
-                    <div
-                      key={i}
-                      className="overflow-hidden rounded-xl border border-white/5 bg-white/[0.03]"
-                    >
+                    <div key={i} className="overflow-hidden rounded-xl border border-line bg-bg-soft">
                       <div className={`h-24 bg-gradient-to-br ${hue}`} />
                       <div className="p-2.5">
-                        <div className="h-2 w-3/4 rounded bg-white/10" />
-                        <div className="mt-2 h-2 w-1/3 rounded bg-accent/40" />
+                        <div className="h-2 w-3/4 rounded bg-navy/10" />
+                        <div className="mt-2 h-2 w-1/3 rounded bg-brand/50" />
                       </div>
                     </div>
                   ))}

@@ -34,6 +34,12 @@ const rows: { label: string; dev: Cell; wp: Cell; appito: Cell }[] = [
     appito: { type: "yes", text: "ذاتاً موبایل‌محور" },
   },
   {
+    label: "سازگاری چندسکویی (کراس‌پلتفرم)",
+    dev: { type: "partial", text: "برای هر سیستم‌عامل توسعه‌ی جداگانه" },
+    wp: { type: "no", text: "فقط وب؛ اپ نیتیو ندارد" },
+    appito: { type: "yes", text: "اندروید، iOS، ویندوز فون و دسکتاپ" },
+  },
+  {
     label: "دامنه‌ی اختصاصی شما",
     dev: { type: "yes", text: "بله" },
     wp: { type: "yes", text: "بله" },
@@ -59,7 +65,7 @@ const rows: { label: string; dev: Cell; wp: Cell; appito: Cell }[] = [
   },
 ];
 
-function Mark({ cell }: { cell: Cell }) {
+function Mark({ cell, align = "start" }: { cell: Cell; align?: "start" | "end" }) {
   const icon =
     cell.type === "yes" ? (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -77,16 +83,14 @@ function Mark({ cell }: { cell: Cell }) {
 
   const color =
     cell.type === "yes"
-      ? "text-emerald-400 bg-emerald-400/10"
+      ? "text-emerald-600 bg-emerald-100"
       : cell.type === "no"
-        ? "text-rose-400 bg-rose-400/10"
-        : "text-amber-400 bg-amber-400/10";
+        ? "text-rose-600 bg-rose-100"
+        : "text-amber-600 bg-amber-100";
 
   return (
-    <div className="flex items-start gap-2.5">
-      <span className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full ${color}`}>
-        {icon}
-      </span>
+    <div className={"flex items-start gap-2.5 " + (align === "end" ? "flex-row-reverse text-right" : "")}>
+      <span className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full ${color}`}>{icon}</span>
       <span className="text-sm leading-6 text-foreground/85">{cell.text}</span>
     </div>
   );
@@ -96,22 +100,20 @@ export function Comparison() {
   return (
     <section id="compare" className="relative py-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-brand/15 blur-3xl" />
+        <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-brand/10 blur-3xl" />
       </div>
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold text-accent">مقایسه</span>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">
-            چرا اپیتو، نه راه‌های دیگر؟
-          </h2>
+          <span className="text-sm font-bold text-brand">مقایسه</span>
+          <h2 className="mt-3 text-3xl font-black md:text-5xl">چرا اپیتو، نه راه‌های دیگر؟</h2>
           <p className="mt-4 text-muted">
-            سفارش ساخت اپ به توسعه‌دهنده، یا ساختن با وردپرس، یا اپیتو؛ تفاوت را
-            ببینید.
+            سفارش ساخت اپ به توسعه‌دهنده، یا ساختن با وردپرس، یا اپیتو؛ تفاوت را ببینید.
           </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-14 overflow-x-auto pb-2">
+          {/* desktop: comparison table */}
+          <div className="mt-14 hidden overflow-x-auto pb-2 md:block">
             <div className="min-w-[760px]">
               {/* header */}
               <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr] gap-3">
@@ -122,18 +124,11 @@ export function Comparison() {
                     className={
                       "rounded-2xl px-4 py-5 text-center " +
                       (c.featured
-                        ? "border border-brand-2/50 bg-gradient-to-b from-brand/25 to-surface glow"
-                        : "border border-white/8 bg-white/[0.03]")
+                        ? "border border-brand/40 bg-gradient-to-b from-brand/10 to-surface glow"
+                        : "border border-line bg-surface shadow-sm")
                     }
                   >
-                    {c.featured && (
-                      <span className="mb-2 inline-block rounded-full bg-gradient-to-l from-brand to-accent px-3 py-0.5 text-[11px] font-bold">
-                        پیشنهاد ما
-                      </span>
-                    )}
-                    <p className={"font-black " + (c.featured ? "text-lg gradient-text" : "text-base")}>
-                      {c.label}
-                    </p>
+                    <p className={"font-black " + (c.featured ? "text-lg gradient-text" : "text-base")}>{c.label}</p>
                     <p className="mt-1 text-xs text-muted">{c.sub}</p>
                   </div>
                 ))}
@@ -144,18 +139,16 @@ export function Comparison() {
                 {rows.map((r) => (
                   <div
                     key={r.label}
-                    className="grid grid-cols-[1.1fr_1fr_1fr_1fr] items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.02] px-2 py-3"
+                    className="grid grid-cols-[1.1fr_1fr_1fr_1fr] items-center gap-3 rounded-2xl border border-line bg-surface px-2 py-3 shadow-sm"
                   >
-                    <div className="px-3 text-sm font-bold text-foreground">
-                      {r.label}
-                    </div>
+                    <div className="px-3 text-sm font-bold text-foreground">{r.label}</div>
                     <div className="px-3">
                       <Mark cell={r.dev} />
                     </div>
                     <div className="px-3">
                       <Mark cell={r.wp} />
                     </div>
-                    <div className="rounded-xl bg-brand-2/5 px-3 py-1">
+                    <div className="rounded-xl bg-brand/5 px-3 py-1">
                       <Mark cell={r.appito} />
                     </div>
                   </div>
@@ -163,12 +156,41 @@ export function Comparison() {
               </div>
             </div>
           </div>
+
+          {/* mobile: stacked feature cards (no horizontal scroll) */}
+          <div className="mt-10 space-y-4 md:hidden">
+            {rows.map((r) => (
+              <div key={r.label} className="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm">
+                <p className="border-b border-line bg-bg-soft px-4 py-3 text-sm font-black text-foreground">
+                  {r.label}
+                </p>
+                <div className="divide-y divide-line">
+                  {columns.map((c) => {
+                    const cell = r[c.key as "dev" | "wp" | "appito"];
+                    return (
+                      <div
+                        key={c.key}
+                        className={
+                          "flex items-start justify-between gap-3 px-4 py-3 " + (c.featured ? "bg-brand/5" : "")
+                        }
+                      >
+                        <span className={"shrink-0 text-xs font-bold " + (c.featured ? "gradient-text" : "text-muted")}>
+                          {c.label}
+                        </span>
+                        <Mark cell={cell} align="end" />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal delay={0.2} className="mt-10 text-center">
           <a
             href="#cta"
-            className="inline-block rounded-full bg-gradient-to-l from-brand to-accent px-8 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
+            className="inline-block rounded-full bg-gradient-to-l from-brand to-navy px-8 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
           >
             می‌خواهم با اپیتو شروع کنم
           </a>

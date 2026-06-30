@@ -36,26 +36,20 @@ export function CaseStudies() {
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-bold text-accent-2">داستان مشتریان</span>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">
-            کسب‌وکارهایی که با اپیتو رشد کردند
-          </h2>
+          <h2 className="mt-3 text-3xl font-black md:text-5xl">کسب‌وکارهایی که با اپیتو رشد کردند</h2>
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {cases.map((c, i) => (
             <Reveal key={c.name} delay={i * 0.1}>
-              <div className="flex h-full flex-col rounded-3xl border border-white/8 bg-white/[0.03] p-7 transition-all hover:-translate-y-1.5 hover:bg-white/[0.05]">
-                <span className="w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-accent">
+              <div className="flex h-full flex-col rounded-3xl border border-line bg-surface p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg">
+                <span className="w-fit rounded-full border border-line bg-bg-soft px-3 py-1 text-xs text-brand">
                   {c.badge}
                 </span>
-                <p className="mt-5 flex-1 text-sm leading-8 text-foreground/90">
-                  «{c.quote}»
-                </p>
-                <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-5">
+                <p className="mt-5 flex-1 text-sm leading-8 text-foreground/90">«{c.quote}»</p>
+                <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
                   <div className="flex items-center gap-3">
-                    <span
-                      className={`h-10 w-10 rounded-full bg-gradient-to-br ${c.avatar}`}
-                    />
+                    <span className={`h-10 w-10 rounded-full bg-gradient-to-br ${c.avatar}`} />
                     <span className="text-sm font-bold">{c.name}</span>
                   </div>
                   <div className="text-left">

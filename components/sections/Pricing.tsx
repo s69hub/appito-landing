@@ -4,7 +4,11 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "../Reveal";
 
-const toFa = (s: string | number) => String(s).replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
+const toFa = (s: string | number) =>
+  Number(s)
+    .toLocaleString("en-US")
+    .replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)])
+    .replace(/,/g, "٬");
 
 type Plan = {
   name: string;
@@ -21,24 +25,24 @@ const plans: Plan[] = [
   {
     name: "شروع",
     tagline: "برای اینفلوئنسرها و کسب‌وکارهای نوپا",
-    monthly: 780,
-    annual: 650,
-    period: "هزار تومان / ماه",
+    monthly: 780000,
+    annual: 650000,
+    period: "تومان / ماه",
     featured: false,
-    features: ["دامنه‌ی اختصاصی شما", "تا ۱۰۰ محصول", "درگاه پرداخت", "پنل مدیریت موبایل", "پشتیبانی ایمیلی"],
+    features: ["دامنه‌ی اختصاصی شما", "محصولات نامحدود", "پنل مدیریت فروشگاه", "پشتیبانی ایمیلی"],
   },
   {
     name: "حرفه‌ای",
     tagline: "برای فروشگاه‌های در حال رشد",
-    monthly: 1280,
-    annual: 1070,
-    period: "هزار تومان / ماه",
+    monthly: 1280000,
+    annual: 1070000,
+    period: "تومان / ماه",
     featured: true,
     features: [
       "همه‌ی امکانات پلن شروع",
-      "محصولات نامحدود",
-      "سفارشی‌سازی کامل تم",
-      "کد تخفیف و کمپین",
+      "درگاه پرداخت",
+      "شیوه‌های ارسال",
+      "مدیریت کاربران",
       "گزارش فروش پیشرفته",
       "پشتیبانی اولویت‌دار",
     ],

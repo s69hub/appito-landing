@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "راه‌اندازی چقدر طول می‌کشد؟",
-    a: "معمولاً ظرف چند روز کاری، بسته به آماده بودن دامنه و محتوای اولیه‌ی فروشگاه، همه‌چیز آماده‌ی فروش است.",
+    a: "معمولاً ظرف ۲۴ ساعت، بسته به آماده بودن دامنه و محتوای اولیه‌ی فروشگاه، همه‌چیز آماده‌ی فروش است.",
   },
   {
     q: "کارمزد تراکنش‌ها چقدر است و پول به کجا واریز می‌شود؟",
@@ -104,7 +104,7 @@ export function FAQ() {
           <p className="text-sm text-muted">سوال دیگری دارید؟</p>
           <a
             href="#cta"
-            className="mt-3 inline-flex rounded-full border border-line bg-surface px-6 py-3 text-sm font-bold text-foreground shadow-sm transition-colors hover:bg-bg-soft"
+            className="mt-3 rounded-full bg-gradient-to-l from-brand to-navy px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand/20 transition-transform hover:scale-105 sm:block"
           >
             با ما صحبت کنید
           </a>

@@ -85,7 +85,7 @@ export function Footer() {
         <div className="mt-12 grid items-center gap-8 border-t border-line pt-10 md:grid-cols-2">
           <div>
             <h4 className="text-base font-black">از تخفیف‌ها و امکانات تازه باخبر شوید</h4>
-            <p className="mt-1.5 text-sm text-muted">خبرنامه‌ی اپیتو؛ بدون اسپم، هر زمان لغو کنید.</p>
+            <p className="mt-1.5 text-sm text-muted">خبرنامه‌ی اپیتو؛ بدون اسپم، هر زمان بخواهید می‌توانید لغو کنید.</p>
             <form
               action="mailto:hello@appito.app"
               method="post"

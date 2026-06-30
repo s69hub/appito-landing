@@ -1,10 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
-import { useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { PhoneMockup } from "../PhoneMockup";
 import { Counter } from "../Counter";
 import { platforms } from "../PlatformIcons";
+import { industries } from "./IndustryShowcase";
 
 const container: Variants = {
   hidden: {},
@@ -16,16 +17,60 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const trustChips = ["بدون کدنویسی", "راه‌اندازی چند روزه", "SSL رایگان"];
+const trustChips = ["بدون کدنویسی", "راه‌اندازی ۲۴ ساعته", "SSL رایگان"];
+
+// Per-store floating chips (color + content). Order matches `industries`.
+const heroChips = [
+  { color: "#7a4dff", sales: "۱۲٬۴۰۰٬۰۰۰ ت", order: "مانتو و کیف · ثبت شد", growth: "۳۲٪+" },
+  { color: "#ec4899", sales: "۸٬۷۵۰٬۰۰۰ ت", order: "سرم ویتامین C · ثبت شد", growth: "۲۷٪+" },
+  { color: "#f59e0b", sales: "۴٬۹۸۰٬۰۰۰ ت", order: "۲ کاپوچینو · آماده شد ✓", growth: "۴۱٪+" },
+  { color: "#0ea5e9", sales: "۳۶٬۲۰۰٬۰۰۰ ت", order: "هندزفری بلوتوث · ارسال شد", growth: "۱۹٪+" },
+  { color: "#f97316", sales: "۶٬۳۰۰٬۰۰۰ ت", order: "ظرف سفالی · بسته‌بندی شد", growth: "۲۴٪+" },
+  { color: "#22c55e", sales: "۵٬۱۵۰٬۰۰۰ ت", order: "کاکتوس مینی · ارسال شد ✓", growth: "۳۸٪+" },
+];
+// Per-store positions so the chips visibly jump to a new spot as the store changes.
+const chip1Pos: React.CSSProperties[] = [
+  { top: "1rem", right: "-1.5rem" },
+  { top: "6rem", right: "4rem" },
+  { top: "-1rem", right: "2.5rem" },
+  { top: "8rem", right: "-2rem" },
+  { top: "2.5rem", right: "5.5rem" },
+  { top: "0.5rem", right: "1rem" },
+];
+const chip2Pos: React.CSSProperties[] = [
+  { bottom: "6rem", left: "-1.5rem" },
+  { bottom: "9rem", left: "3.5rem" },
+  { bottom: "4rem", left: "0.5rem" },
+  { bottom: "10rem", left: "-2rem" },
+  { bottom: "5rem", left: "5rem" },
+  { bottom: "8rem", left: "1.5rem" },
+];
+const chip3Pos: React.CSSProperties[] = [
+  { bottom: "1rem", right: "1.5rem" },
+  { bottom: "4rem", right: "-1.5rem" },
+  { bottom: "-1rem", right: "5rem" },
+  { bottom: "3rem", right: "0rem" },
+  { bottom: "0.5rem", right: "6.5rem" },
+  { bottom: "2.5rem", right: "2rem" },
+];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const [storeIndex, setStoreIndex] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   const yPhone = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -50]);
+
+  useEffect(() => {
+    if (reduce) return;
+    const id = setInterval(() => {
+      setStoreIndex((i) => (i + 1) % industries.length);
+    }, 2500);
+    return () => clearInterval(id);
+  }, [reduce]);
 
   return (
     <section ref={ref} className="relative overflow-hidden pt-36 pb-24 md:pt-44">
@@ -197,35 +242,83 @@ export function Hero() {
         >
           <div className="absolute inset-0 -z-10 m-auto h-80 w-80 rounded-full bg-brand/20 blur-3xl" />
           <div className="animate-float">
-            <PhoneMockup />
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.div
+                key={industries[storeIndex].id}
+                initial={{ opacity: 0, scale: 0.96, rotateY: 12 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                exit={{ opacity: 0, scale: 0.96, rotateY: -12 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <PhoneMockup
+                  {...industries[storeIndex].store}
+                  accentGradient={industries[storeIndex].theme.buttonGradient}
+                  accentChip={industries[storeIndex].theme.chip}
+                  accentBadge={industries[storeIndex].theme.chip}
+                  accentText={industries[storeIndex].theme.text}
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* floating chips */}
+          {/* floating chips — smoothly relocate; color & content change per store */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 }}
-            className="absolute right-0 top-16 hidden glass rounded-2xl px-4 py-3 md:block animate-float-slow"
+            style={chip1Pos[storeIndex]}
+            className="absolute hidden glass rounded-2xl px-4 py-3 transition-[top,right,bottom,left] duration-700 ease-out md:block animate-float-slow"
           >
             <p className="text-xs text-muted">فروش امروز</p>
-            <p className="text-lg font-black text-brand">۱۲٬۴۰۰٬۰۰۰ ت</p>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.p
+                key={storeIndex}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.35 }}
+                className="text-lg font-black"
+                style={{ color: heroChips[storeIndex].color }}
+              >
+                {heroChips[storeIndex].sales}
+              </motion.p>
+            </AnimatePresence>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1 }}
-            className="absolute bottom-24 left-0 hidden glass rounded-2xl px-4 py-3 md:block animate-float"
+            style={chip2Pos[storeIndex]}
+            className="absolute hidden glass rounded-2xl px-4 py-3 transition-[top,right,bottom,left] duration-700 ease-out md:block animate-float"
           >
             <p className="text-xs text-muted">سفارش جدید</p>
-            <p className="text-sm font-bold">۳ کالا · ارسال شد ✓</p>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.p
+                key={storeIndex}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.35 }}
+                className="text-sm font-bold"
+              >
+                {heroChips[storeIndex].order}
+              </motion.p>
+            </AnimatePresence>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.15 }}
-            className="absolute bottom-4 right-6 hidden items-center gap-2 glass rounded-2xl px-4 py-2.5 md:flex animate-float-slow"
+            style={chip3Pos[storeIndex]}
+            className="absolute hidden items-center gap-2 glass rounded-2xl px-4 py-2.5 transition-[top,right,bottom,left] duration-700 ease-out md:flex animate-float-slow"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-brand/15 text-brand">
+            <span
+              className="grid h-8 w-8 place-items-center rounded-full transition-colors duration-500"
+              style={{
+                color: heroChips[storeIndex].color,
+                backgroundColor: `color-mix(in srgb, ${heroChips[storeIndex].color} 15%, transparent)`,
+              }}
+            >
               <svg
                 width="16"
                 height="16"
@@ -242,7 +335,19 @@ export function Hero() {
             </span>
             <div>
               <p className="text-[11px] text-muted">رشد فروش</p>
-              <p className="text-sm font-black text-brand">۳۲٪+</p>
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.p
+                  key={storeIndex}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.35 }}
+                  className="text-sm font-black"
+                  style={{ color: heroChips[storeIndex].color }}
+                >
+                  {heroChips[storeIndex].growth}
+                </motion.p>
+              </AnimatePresence>
             </div>
           </motion.div>
         </motion.div>

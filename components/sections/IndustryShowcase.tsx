@@ -14,7 +14,7 @@ type IndustryTheme = {
   chip: string;
 };
 
-type Industry = {
+export type Industry = {
   id: string;
   label: string;
   icon: typeof Shirt;
@@ -24,7 +24,7 @@ type Industry = {
   store: PhoneMockupProps;
 };
 
-const industries: Industry[] = [
+export const industries: Industry[] = [
   {
     id: "fashion",
     label: "مد و پوشاک",

@@ -19,7 +19,7 @@ const rows: { label: string; dev: Cell; wp: Cell; appito: Cell }[] = [
     label: "زمان تا راه‌اندازی",
     dev: { type: "no", text: "هفته‌ها تا ماه‌ها" },
     wp: { type: "partial", text: "چند روز تا چند هفته" },
-    appito: { type: "yes", text: "فقط چند روز" },
+    appito: { type: "yes", text: "فقط ۲۴ ساعت" },
   },
   {
     label: "نیاز به دانش فنی",

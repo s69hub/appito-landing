@@ -19,7 +19,7 @@ export function CTA() {
                 <span className="gradient-text">اختصاصی‌تان</span> را راه بیندازید
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-muted">
-                در کمتر از چند روز، یک اپلیکیشن فروشگاهی حرفه‌ای داشته باشید. بدون کدنویسی، بدون دردسر فنی.
+                در کمتر از ۲۴ ساعت، یک اپلیکیشن فروشگاهی حرفه‌ای داشته باشید. بدون کدنویسی، بدون دردسر فنی.
               </p>
 
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -41,7 +41,7 @@ export function CTA() {
               <p className="mt-6 text-xs text-muted">بدون نیاز به دانش فنی · راه‌اندازی توسط تیم اپیتو</p>
 
               <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
-                {["بدون کدنویسی", "راه‌اندازی چند روزه", "پشتیبانی فارسی", "لغو آسان"].map((c) => (
+                {["بدون کدنویسی", "راه‌اندازی ۲۴ ساعته", "پشتیبانی فارسی", "لغو آسان"].map((c) => (
                   <span
                     key={c}
                     className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3 py-1.5 text-xs font-medium text-foreground backdrop-blur"

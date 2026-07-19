@@ -22,7 +22,7 @@ export function MobileCTA() {
     >
       <div className="glass flex items-center gap-2 rounded-2xl p-2">
         <a
-          href="#cta"
+          href="/start"
           className="flex-1 rounded-xl bg-gradient-to-l from-brand to-navy px-4 py-3 text-center text-sm font-bold text-white shadow-lg shadow-brand/20"
         >
           شروع کنید

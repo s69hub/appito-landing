@@ -271,7 +271,7 @@ export function IndustryShowcase() {
                   ))}
                 </ul>
                 <a
-                  href="#cta"
+                  href="/start"
                   className={`mt-8 inline-flex rounded-full bg-gradient-to-l ${current.theme.buttonGradient} px-6 py-3 text-sm font-bold text-white shadow-lg ${current.theme.shadow} transition-transform hover:scale-105`}
                 >
                   فروشگاه {current.label} بسازید

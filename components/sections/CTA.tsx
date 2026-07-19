@@ -24,14 +24,14 @@ export function CTA() {
 
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
-                  href="#"
+                  href="/start"
                   className="group relative overflow-hidden rounded-full bg-gradient-to-l from-brand to-navy px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand/20 transition-transform hover:scale-105"
                 >
                   <span className="relative z-10">شروع کنید</span>
                   <span className="absolute inset-0 shine animate-shimmer" />
                 </a>
                 <a
-                  href="#pricing"
+                  href="/consult"
                   className="rounded-full border border-line bg-surface px-8 py-4 text-sm font-bold text-foreground shadow-sm transition-colors hover:bg-bg-soft"
                 >
                   مشاوره رایگان

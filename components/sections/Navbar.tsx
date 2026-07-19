@@ -50,7 +50,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#cta"
+            href="/start"
             className="hidden rounded-full bg-gradient-to-l from-brand to-navy px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand/20 transition-transform hover:scale-105 sm:block"
           >
             شروع کنید
@@ -112,7 +112,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#cta"
+                href="/start"
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-xl bg-gradient-to-l from-brand to-navy px-4 py-3 text-center text-sm font-bold text-white"
               >

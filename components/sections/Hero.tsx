@@ -158,14 +158,16 @@ export function Hero() {
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
           >
             <a
-              href="#cta"
+              href="/start"
               className="group relative overflow-hidden rounded-full bg-gradient-to-l from-brand to-navy px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand/20 transition-transform hover:scale-105"
             >
               <span className="relative z-10">شروع کنید</span>
               <span className="absolute inset-0 shine animate-shimmer" />
             </a>
             <a
-              href="#how"
+              href="https://demo.myappito.ir"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-line bg-surface px-7 py-3.5 text-sm font-bold text-foreground shadow-sm transition-colors hover:bg-bg-soft"
             >
               مشاهده دمو

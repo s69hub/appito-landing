@@ -171,7 +171,7 @@ export function Pricing() {
                 </ul>
 
                 <a
-                  href="#cta"
+                  href={p.custom ? "/consult" : "/start"}
                   className={
                     "mt-7 rounded-full px-5 py-3 text-center text-sm font-bold transition-transform hover:scale-105 " +
                     (p.featured
@@ -179,7 +179,7 @@ export function Pricing() {
                       : "border border-line text-foreground hover:bg-bg-soft")
                   }
                 >
-                  انتخاب پلن
+                  {p.custom ? "تماس بگیرید" : "انتخاب پلن"}
                 </a>
               </div>
             </Reveal>

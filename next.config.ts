@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     contentDispositionType: "inline",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  serverExternalPackages: ["better-sqlite3"],
 };
 
 export default nextConfig;
